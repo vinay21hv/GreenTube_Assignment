@@ -1,4 +1,5 @@
-﻿using NGRS_BDD_API_UI_Assignment.Base;
+﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
+using NGRS_BDD_API_UI_Assignment.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -16,7 +17,8 @@ namespace NGRS_BDD_API_UI_Assignment.Pages
 
         public PaymentProviderPage ClickNextButton()
         {
-            NextButton.Click();
+            Utils.WaitUntilElementToBeClickable(NextButton, 20, Driver);
+            Utils.ClickElement(NextButton);
             return new PaymentProviderPage(Driver);
         }
     }

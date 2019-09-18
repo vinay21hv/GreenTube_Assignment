@@ -1,4 +1,4 @@
-﻿using NGRS_BDD_API_UI_Assignment.Base;
+﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -17,7 +17,6 @@ namespace NGRS_BDD_API_UI_Assignment.Helpers
     [Binding]
     public class Utils : BasePage
     {
-        //public static IWebDriver driver;
         public static void WaitUntilElementToBeClickable(IWebElement element, int TimeOut, IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TimeOut));

@@ -8,7 +8,7 @@ Scenario Outline: 1 Login
 	Then I should see the status code for login as <statuscode>
 	Examples:
 	| url                                              | nickname        | password   | statuscode |
-	| "https://www.gametwist.com/nrgs/en/api/login-v1" | "testuser20091" | "Test@123" | 200        |
+	| "https://www.gametwist.com/nrgs/en/api/login-v1" | "testuser21091" | "Test@123" | 200        |
 
 Scenario Outline: 2 AddConsent
 	Given I have endpoint <url>

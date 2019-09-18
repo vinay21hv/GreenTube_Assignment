@@ -1,19 +1,14 @@
-﻿using NGRS_BDD_API_UI_Assignment.FunctionalityImplementation;
-using NGRS_BDD_API_UI_Assignment.Base;
+﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
 using NGRS_BDD_API_UI_Assignment.Pages;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
 using TechTalk.SpecFlow;
 using NGRS_BDD_API_UI_Assignment.Helpers;
 
 namespace NGRS_BDD_API_UI_Assignment.StepDefinitions
 {
     [Binding]
-    public class CompletePurchaseSteps : BasePage
+    public class MakePaymentSteps : BasePage
     {
-        GuiImplementation UIpage;
         LandingPage landingPage;
         PaymentProviderPage paymentProviderPage;
         LoginPage loginPage;
@@ -22,23 +17,20 @@ namespace NGRS_BDD_API_UI_Assignment.StepDefinitions
         public void GivenINavigateToLandingPageUsingPaymentRedirectURL()
         {
             Initialize();
-            UIpage= new GuiImplementation(Driver);
             landingPage = new LandingPage(Driver);
-            
             Driver.Navigate().GoToUrl(Data.PaymentURL);
         }
 
         [When(@"I click Next button")]
         public void WhenIClickNextButton()
         {
-            //UIpage.ClickNextButton();
             paymentProviderPage = landingPage.ClickNextButton();
         }
 
         [Then(@"I should see payment provider page")]
         public void ThenIShouldSeePaymentProviderPage()
         {
-            Assert.IsTrue(UIpage.VerifyPaymentPageLoaded(), "Payment page not loaded");
+            Assert.IsTrue(paymentProviderPage.VerifyPaymentPageLoaded(), "Payment page not loaded");
         }
 
         [Then(@"select Payment provider as ""(.*)"" and click continue button")]
@@ -62,13 +54,13 @@ namespace NGRS_BDD_API_UI_Assignment.StepDefinitions
             loginPage.ClickLoginButton();
         }
 
-        [Then(@"I shoud see error message")]
-        public void ThenIShoudSeeErrorMessage()
+        [Then(@"I shoud see error message ""(.*)"", ""(.*)""")]
+        public void ThenIShoudSeeErrorMessage(string errMsg1, string errMsg2)
         {
             Assert.IsTrue(loginPage.VerifyErrorMsg(), "Failure message not displayed");
             string ErrorText = loginPage.GetErrorText();
-            StringAssert.Contains("Es sind Fehler aufgetreten!", ErrorText); pass in feature
-            StringAssert.Contains("Verfüger oder PIN falsch.", ErrorText);
+            StringAssert.Contains(errMsg1, ErrorText);
+            StringAssert.Contains(errMsg2, ErrorText);
         }
 
         [Then(@"I click cancel button")]

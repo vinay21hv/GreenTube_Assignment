@@ -90,9 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BasePage.cs" />
-    <Compile Include="FunctionalityImplementation\GuiImplementation.cs" />
     <Compile Include="Helpers\Data.cs" />
-    <Compile Include="FunctionalityImplementation\RestImplementation.cs" />
+    <Compile Include="ApplicationLayer\RestImplementation.cs" />
     <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Pages\LandingPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />

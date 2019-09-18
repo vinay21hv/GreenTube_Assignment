@@ -72,8 +72,8 @@ namespace NGRS_BDD_API_UI_Assignment.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Complete payment")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        [NUnit.Framework.TestCaseAttribute("\"Bank Austria\"", "\"abcd\"", "\"xyz\"", "\"Play FREE Online Casino games\"", null)]
-        public virtual void CompletePayment(string bankname, string userid, string pin, string title, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("\"Bank Austria\"", "\"abcd\"", "\"xyz\"", "\"Play FREE Online Casino games\"", "\"Es sind Fehler aufgetreten!\"", "\"Verfüger oder PIN falsch.\"", null)]
+        public virtual void CompletePayment(string bankname, string userid, string pin, string title, string errMsg1, string errMsg2, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "mytag"};
@@ -98,7 +98,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  testRunner.When(string.Format("I enter {0} and {1} and click login button", userid, pin), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.Then("I shoud see error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I shoud see error message {0}, {1}", errMsg1, errMsg2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13
  testRunner.And("I click cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14

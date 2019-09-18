@@ -1,4 +1,5 @@
-﻿using NGRS_BDD_API_UI_Assignment.Base;
+﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
+using NGRS_BDD_API_UI_Assignment.Helpers;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -17,7 +18,7 @@ namespace NGRS_BDD_API_UI_Assignment.Pages
         [FindsBy(How = How.Id, Using = "gebForm:LoginCommandButton")]
         private IWebElement LoginButton { get; set; }
 
-        [FindsBy(How = How.ClassName, Using = "messagebox messagebox_error")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='messagebox messagebox_error']")]
         private IWebElement ErrorMsg { get; set; }
 
         [FindsBy(How = How.Id, Using = "gebForm:j_id74")]
@@ -30,23 +31,20 @@ namespace NGRS_BDD_API_UI_Assignment.Pages
 
         public bool VerifyLoginPageLoaded()
         {
+            Utils.WaitUntilElementToBeClickable(LoginButton, 20, Driver);
             return UserIdTextbox.Displayed;
         }
         public void EnterUserId(string userid)
         {
-            UserIdTextbox.Clear();
-            UserIdTextbox.SendKeys(userid);
+            Utils.EnterText(UserIdTextbox, userid);
         }
-
         public void EnterPin(string pin)
         {
-            PinTextbox.Clear();
-            PinTextbox.SendKeys(pin);
+            Utils.EnterText(PinTextbox, pin);
         }
-
         public void ClickLoginButton()
         {
-            LoginButton.Click();
+            Utils.ClickElement(LoginButton);
         }
 
         public bool VerifyErrorMsg()
@@ -54,9 +52,19 @@ namespace NGRS_BDD_API_UI_Assignment.Pages
             return ErrorMsg.Displayed;
         }
 
+        public string GetErrorText()
+        {
+            return ErrorMsg.Text;
+        }
         public void ClickCancelButton()
         {
-            CancelButton.Click();
+            Utils.ClickElement(CancelButton);
+        }
+
+        public string GetPageTitle(string Title)
+        {
+            Utils.WaitForPageTitle(20, Driver, Title);
+            return Driver.Title;
         }
     }
 }

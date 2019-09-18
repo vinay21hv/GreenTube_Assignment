@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using RestSharp;
-using NGRS_BDD_API_UI_Assignment.Base;
+using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
 using System;
 using TechTalk.SpecFlow;
 

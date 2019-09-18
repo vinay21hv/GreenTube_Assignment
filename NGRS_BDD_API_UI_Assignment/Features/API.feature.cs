@@ -71,7 +71,7 @@ namespace NGRS_BDD_API_UI_Assignment.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("1 Login")]
-        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/login-v1\"", "\"testuser20091\"", "\"Test@123\"", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/login-v1\"", "\"testuser21091\"", "\"Test@123\"", "200", null)]
         public virtual void _1Login(string url, string nickname, string password, string statuscode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Login", null, exampleTags);

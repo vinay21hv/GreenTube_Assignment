@@ -1,4 +1,5 @@
-﻿using NGRS_BDD_API_UI_Assignment.Base;
+﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
+using NGRS_BDD_API_UI_Assignment.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
@@ -25,11 +26,12 @@ namespace NGRS_BDD_API_UI_Assignment.Pages
         }
         public bool VerifyPaymentPageLoaded()
         {
+            Utils.WaitUntilElementToBeClickable(ContinueButton, 20, Driver);
             return BankList.Displayed;
         }
         public LoginPage ClickContinueButton()
         {
-            ContinueButton.Click();
+            Utils.ClickElement(ContinueButton);
             return new LoginPage(Driver);
         }
     }

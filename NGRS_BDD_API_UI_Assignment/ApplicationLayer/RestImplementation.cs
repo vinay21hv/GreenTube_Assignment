@@ -6,7 +6,7 @@ using RestSharp;
 using System;
 using System.Net;
 
-namespace NGRS_BDD_API_UI_Assignment.Base
+namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
 {
     class RestImplementation
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NGRS_BDD_API_UI_Assignment.Base
+namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
 {
     class Data
     {

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NGRS_BDD_API_UI_Assignment.Helpers;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NGRS_BDD_API_UI_Assignment.Base
+namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
 {
     public class BasePage
     {
