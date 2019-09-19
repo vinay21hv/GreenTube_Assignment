@@ -1,15 +1,9 @@
 ﻿using NGRS_BDD_API_UI_Assignment.ApplicationLayer;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace NGRS_BDD_API_UI_Assignment.Helpers
@@ -45,7 +39,7 @@ namespace NGRS_BDD_API_UI_Assignment.Helpers
             try
             {
                 Screenshot image = ((ITakesScreenshot)Driver).GetScreenshot();
-                string fileName = string.Format(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                string fileName = string.Format(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
                           @"\Screenshot" + "_" +
                           DateTime.Now.ToString("(dd_MMMM_hh_mm_ss_tt)") + ".png");
                 image.SaveAsFile(fileName, ImageFormat.Png);

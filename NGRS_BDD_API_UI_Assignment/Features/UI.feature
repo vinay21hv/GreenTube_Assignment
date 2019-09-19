@@ -1,7 +1,6 @@
 ﻿Feature: Complete purchase by making payment
 	
 
-
 Scenario Outline: Complete payment
 	Given I navigate to landing page using paymentRedirect URL
 	When I click Next button

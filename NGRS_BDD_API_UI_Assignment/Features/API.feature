@@ -8,7 +8,7 @@ Scenario Outline: 1 Login
 	Then I should see the status code for login as <statuscode>
 	Examples:
 	| url                                              | nickname        | password   | statuscode |
-	| "https://www.gametwist.com/nrgs/en/api/login-v1" | "testuser21091" | "Test@123" | 200        |
+	| "https://www.gametwist.com/nrgs/en/api/login-v1" | "testuser24091" | "Test@123" | 200        |
 
 Scenario Outline: 2 AddConsent
 	Given I have endpoint <url>
@@ -17,6 +17,8 @@ Scenario Outline: 2 AddConsent
 	Examples:
 	| url                                                        | consentType                 | acceptance | statuscode |
 	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "GeneralTermsAndConditions" | "true"     | 200        |
+	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "DataPrivacyPolicy"         | "true"     | 200        |
+	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "MarketingProfiling"        | "true"     | 200        |
 
 Scenario Outline: 3 VerifyConsent
 	Given I have endpoint <url>
@@ -26,6 +28,8 @@ Scenario Outline: 3 VerifyConsent
 	Examples:
 	| url                                                        | consentType                 | statuscode | consentParam  | consentValue |
 	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "GeneralTermsAndConditions" | 200        | "wasAccepted" | "true"       |
+	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "DataPrivacyPolicy"         | 200        | "wasAccepted" | "true"       |
+	| "https://www.gametwist.com/nrgs/en/api/consent/consent-v1" | "MarketingProfiling"        | 200        | "wasAccepted" | "true"       |
 
 Scenario Outline: 4 UpgradeToFullRegistration
 	Given I have endpoint <url>

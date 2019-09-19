@@ -11,7 +11,6 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
         public static string BearerToken { get; set; }
         public static string PaymentURL { get; set; }
 
-
         public static dynamic LoginJsonData(string username, string password)
         {
             var JsonBody = new
@@ -41,7 +40,6 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
             };
             return JsonBody;
         }
-
         public static dynamic PaymentJsonData()
         {
             dynamic JsonBody = new

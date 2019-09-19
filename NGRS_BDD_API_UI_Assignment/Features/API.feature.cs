@@ -71,7 +71,7 @@ namespace NGRS_BDD_API_UI_Assignment.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("1 Login")]
-        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/login-v1\"", "\"testuser21091\"", "\"Test@123\"", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/login-v1\"", "\"testuser23091\"", "\"Test@123\"", "200", null)]
         public virtual void _1Login(string url, string nickname, string password, string statuscode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 Login", null, exampleTags);
@@ -91,6 +91,8 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("2 AddConsent")]
         [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"GeneralTermsAndConditions\"", "\"true\"", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"DataPrivacyPolicy\"", "\"true\"", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"MarketingProfiling\"", "\"true\"", "200", null)]
         public virtual void _2AddConsent(string url, string consentType, string acceptance, string statuscode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 AddConsent", null, exampleTags);
@@ -110,19 +112,21 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("3 VerifyConsent")]
         [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"GeneralTermsAndConditions\"", "200", "\"wasAccepted\"", "\"true\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"DataPrivacyPolicy\"", "200", "\"wasAccepted\"", "\"true\"", null)]
+        [NUnit.Framework.TestCaseAttribute("\"https://www.gametwist.com/nrgs/en/api/consent/consent-v1\"", "\"MarketingProfiling\"", "200", "\"wasAccepted\"", "\"true\"", null)]
         public virtual void _3VerifyConsent(string url, string consentType, string statuscode, string consentParam, string consentValue, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("3 VerifyConsent", null, exampleTags);
-#line 21
+#line 23
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 22
- testRunner.Given(string.Format("I have endpoint {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 23
- testRunner.When(string.Format("I perform GET operation to verify consent for {0}", consentType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 24
- testRunner.Then(string.Format("I should see the status code for verify consent as {0}", statuscode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given(string.Format("I have endpoint {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 25
+ testRunner.When(string.Format("I perform GET operation to verify consent for {0}", consentType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
+ testRunner.Then(string.Format("I should see the status code for verify consent as {0}", statuscode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 27
  testRunner.And(string.Format("I should see the {0} as {1}", consentParam, consentValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -134,14 +138,14 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void _4UpgradeToFullRegistration(string url, string statuscode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("4 UpgradeToFullRegistration", null, exampleTags);
-#line 30
+#line 34
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 31
+#line 35
  testRunner.Given(string.Format("I have endpoint {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 32
+#line 36
  testRunner.When("I perform POST operation to Upgrade To Full Registration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 33
+#line 37
  testRunner.Then(string.Format("I should see the status code for full registration as {0}", statuscode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,16 +158,16 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void _5Purchase(string url, string statuscode, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5 Purchase", null, exampleTags);
-#line 38
+#line 42
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 39
+#line 43
  testRunner.Given(string.Format("I have endpoint {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 40
+#line 44
  testRunner.When("I perform POST operation for item purchase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 41
+#line 45
  testRunner.Then(string.Format("I should see the status code for purchase as {0}", statuscode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 42
+#line 46
  testRunner.And("I capture payment URL from the response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();

@@ -12,15 +12,11 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
     {
         public RestClient client = null;
         public string wasAccepted = null;
-        
-
         public RestClient SetEndpoint(string endpointUrl)
         {
             client = new RestClient(endpointUrl);
             return client;
         }
-
-
         public RestResponse Login(string username, string password)
         {
             var request = new RestRequest(Method.POST);
@@ -38,8 +34,6 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
             }
             return (RestResponse)response;
         }
-
-
         public RestResponse AddConsent(string consentType, string acceptance)
         {
             var request = new RestRequest(Method.POST);
@@ -50,8 +44,6 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
             var response = client.Execute(request);
             return (RestResponse)response;
         }
-
-
         public RestResponse GetConsent(string consentTypeValue)
         {
             var request = new RestRequest(Method.GET);
@@ -63,8 +55,6 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
             wasAccepted = jsonResponse.lastKnownConsent.wasAccepted;
             return (RestResponse)response;
         }
-
- 
         public RestResponse UpgradeToFullRegistration()
         {
             var request = new RestRequest(Method.POST);
@@ -74,14 +64,13 @@ namespace NGRS_BDD_API_UI_Assignment.ApplicationLayer
             var response = client.Execute(request);
             return (RestResponse)response;
         }
-
         public RestResponse MakePurchase()
         {
             var request = new RestRequest(Method.POST);
             request.AddJsonBody(Data.PaymentJsonData());
             request.AddHeader("Content-Type", "application/json; charset=utf-8");
             request.AddHeader("Authorization", "Bearer " + Data.BearerToken);
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var response = client.Execute(request);
             return (RestResponse)response;
         }

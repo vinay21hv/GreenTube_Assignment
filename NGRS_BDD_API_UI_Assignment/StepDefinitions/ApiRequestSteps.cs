@@ -14,7 +14,6 @@ namespace NGRS_BDD_API_UI_Assignment.StepDefinitions
 
         private RestResponse response = null;
 
-
         [Given(@"I have endpoint ""(.*)""")]
         public void GivenIHaveEndpoint(string url)
         {
@@ -59,7 +58,6 @@ namespace NGRS_BDD_API_UI_Assignment.StepDefinitions
         [Then(@"I should see the ""(.*)"" as ""(.*)""")]
         public void ThenIShouldSeeTheAs(string consentParam, string consentValue)
         {
-            //Assert.That(Rest.wasAccepted, Is.EqualTo(consentValue), $"Consent value not true");
             StringAssert.AreEqualIgnoringCase(consentValue, Rest.wasAccepted);
         }
 
